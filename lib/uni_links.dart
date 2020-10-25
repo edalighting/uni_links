@@ -3,6 +3,7 @@
 // found in the LICENSE file.
 
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/services.dart';
 
@@ -70,4 +71,15 @@ Stream<Uri> getUriLinksStream() {
       },
     ),
   );
+}
+
+void setResult(String code,Map<String,dynamic> arguments){
+  if(Platform.isAndroid){
+    _mChannel.invokeMethod<bool>('setResult',{'code':code,'arguments':arguments});
+  }
+}
+void setPackages(Map<String,dynamic> arguments){
+  if(Platform.isAndroid){
+    _mChannel.invokeMethod<bool>('setPackages',arguments);
+  }
 }
