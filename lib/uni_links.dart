@@ -73,7 +73,7 @@ Stream<Uri> getUriLinksStream() {
   );
 }
 
-void setResult(String code,Map<String,dynamic> arguments){
+void setResult(int code,Map<String,dynamic> arguments){
   if(Platform.isAndroid){
     _mChannel.invokeMethod<bool>('setResult',{'code':code,'arguments':arguments});
   }

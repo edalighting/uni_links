@@ -81,10 +81,14 @@ public class UniLinksPlugin
     }
 
     private String toDataStringFromExtras(Intent intent){
-        Bundle bundle= intent.getExtras();
         StringBuilder sb=new StringBuilder();
         sb.append("https://");
         sb.append(intent.getAction());
+        Bundle bundle= intent.getExtras();
+        if(bundle==null){
+            return sb.toString();
+        }
+
         sb.append("/?");
         for(String key:bundle.keySet()){
             try{
